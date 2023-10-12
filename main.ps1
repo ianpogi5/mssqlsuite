@@ -27,7 +27,7 @@ if ("sqlengine" -in $Install) {
     }
 
     if ($islinux) {
-        Write-Output "linux detected, downloading the docker container"
+        Write-Output "linux detected, downloading the docker container $SaPassword"
         docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=$SaPassword" -e "MSSQL_COLLATION=$Collation" --name sql -p 1433:1433 -d "mcr.microsoft.com/mssql/server:$Version-latest"
         Write-Output "Waiting for docker to start"
         Start-Sleep -Seconds 10
